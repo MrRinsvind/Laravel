@@ -67,10 +67,10 @@
                             <a href="#" >Пользователи</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Создать Пользователя</a>
+                                    <a href="{{route('admin.users.create')}}">Создать Пользователя</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Все Пользователи</a>
+                                    <a href="{{route('admin.users.index')}}">Все Пользователи</a>
                                 </li>
                             </ul>
                         

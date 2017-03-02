@@ -9,6 +9,7 @@
     <thead>
       <tr>
         <th>ID</th>
+        <th>Аватар</th>
         <th>Имя</th>
         <th>Email</th>
         <th>Статус</th>
@@ -21,7 +22,8 @@
 	@if($users) @foreach($users as $user)
       <tr>
         <td>{{$user['id']}}</td>
-        <td>{{$user['name']}}</td>
+        <td><img height='50' src="{{$user->photo?$user->photo->file:'../images/no_picture.jpg'}}" alt=""></td>
+        <td><a href="{{route('admin.users.edit',$user->id)}}">{{$user['name']}}</a></td>
         <td>{{$user['email']}}</td>
          <td>{{$user->role->name}}</td>
         <td>{{$user['is_active']==1? 'Активирован':"Не активирован"}}</td>
