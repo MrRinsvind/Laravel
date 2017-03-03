@@ -11,23 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ProductController@index');
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/add-to-cart/{id}',[
+	'uses'=>'ProductController@getAddToCart',
+	'as'=>'product.addToCart'
+	]);
+Route::get('/basket', 'ProductController@getCart');
 
-
-
-
+	Route::get('/deal', function(){
+		return view('deal');
+	});
 Route::group(['middleware'=>'admin'],function(){
 
 	Route::get('/admin', function(){
-	return view('admin.index');
-});
+		return view('admin.index');
+	});
 	Route::resource('admin/users','AdminUsersController');
 	Route::resource('admin/products','AdminProductsController');
+	Route::resource('admin/categories','AdminCategoriesController');
 
 });

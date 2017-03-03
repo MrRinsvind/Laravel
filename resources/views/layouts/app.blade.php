@@ -25,6 +25,16 @@
         }
     </style>
 </head>
+@if(Session::has('basket'))
+    <?php 
+    $count=0;
+    $data=Session::get('basket');
+    foreach($data as $dat){
+    $count+=$dat['q'];
+        }?>
+@else
+    <?php $count=0;?>
+@endif
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
@@ -54,9 +64,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}">Логин</a></li>
+                        <li><a href="{{ url('/register') }}">Регистрация</a></li>
+                        <li><a href="{{ url('/basket') }}">Корзина({{$count}})</a></li>
                     @else
+                     <li><a href="{{ url('/basket') }}">Корзина ({{$count}})</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>

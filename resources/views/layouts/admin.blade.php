@@ -76,13 +76,11 @@
                         
                         </li>
                         <li>
-                            <a href="#"> Категории</a>
+                            <a href="{{route('admin.categories.index')}}"> Категории</a>
                             <ul class="nav nav-second-level">
+                                
                                 <li>
-                                    <a href="flot.html">Создать категорию</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Все категории</a>
+                                    <a href="{{route('admin.categories.index')}}">Все категории</a>
                                 </li>
                             </ul>
                         

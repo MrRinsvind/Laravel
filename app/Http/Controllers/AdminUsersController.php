@@ -110,7 +110,7 @@ class AdminUsersController extends Controller
             $input = $request->all();
         }
         
-        if($file = $request->file['photo_id']){
+        if($file = $request->file('photo_id')){
             $name= time().$file->getClientOriginalName();
             $file->move('images',$name);
             $photo = Photo::create(['file'=>$name]);
@@ -134,7 +134,9 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         $user=User::findOrFail($id);
-        unlink(public_path().$user->photo->file);
+        if(!empty($user->photo)){
+            unlink(public_path().$user->photo->file);
+        }
         $user->delete();
         Session::flash('deleted_user','Пользователь был удален');
         return redirect('/admin/users');
