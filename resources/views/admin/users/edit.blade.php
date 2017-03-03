@@ -6,7 +6,7 @@
 <h1>Редактирование пользователя</h1>
 <div class="row">
 	<div class="col-sm-3">
-		<img src="{{$user->photo?'../../'.$user->photo->file:'../../../images/no_picture.jpg'}}" alt="" class="img-rounded img-responsive">
+		<img src="{{$user->photo?'../../../'.$user->photo->file:'../../../images/no_picture.jpg'}}" alt="" class="img-rounded img-responsive">
 	</div>
 	<div class="col-sm-9">
 			{!! Form::model($user,['method'=>'PATCH','action'=>['AdminUsersController@update',$user->id],'files'=>true]) !!}
@@ -41,11 +41,16 @@
 			{!! Form::password('password', ['class'=>'form-control']) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::submit('Редактировать', ['class'=>'btn btn-primary']) !!}
+			{!! Form::submit('Редактировать', ['class'=>'btn btn-primary col-sm-6']) !!}
 		</div>
 
 			{!! Form::close() !!}
 
+			{!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy',$user->id],'files'=>true]) !!}
+				<div class="form-group">
+					{!! Form::submit('Удалить пользователя', ['class'=>'btn btn-danger col-sm-6']) !!}
+				</div>
+			{!! Form::close() !!}
 	</div>
 </div>
 <div class="row">

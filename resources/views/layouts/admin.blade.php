@@ -21,13 +21,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Home</a>
+                <a class="navbar-brand" href="{{url('/admin')}}">Home</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="/logout">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="{{url('/logout')}}">
                        Выход
                     </a>
                     
@@ -52,19 +52,19 @@
                         
 
                         <li>
-                            <a href="#" >Товары</a>
+                            <a href="{{route('admin.products.index')}}" >Товары</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Создать товар</a>
+                                    <a href="{{route('admin.products.create')}}">Создать товар</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Все товары</a>
+                                    <a href="{{route('admin.products.index')}}">Все товары</a>
                                 </li>
                             </ul>
                         
                         </li>
                          <li>
-                            <a href="#" >Пользователи</a>
+                            <a href="{{route('admin.users.index')}}" >Пользователи</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{route('admin.users.create')}}">Создать Пользователя</a>
